@@ -63,7 +63,6 @@ nav {
     border-bottom: 2px solid #d9e9f5;
 }
 
-/* Hamburger Menu (hidden by default) */
 .hamburger {
     display: none;
     font-size: 30px;
@@ -201,21 +200,40 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #e0f7f7;
     padding: 50px 0;
     height: 100vh;
+    position: relative; /* Ensure the video is positioned correctly */
+    overflow: hidden; /* Prevent overflow issues */
 }
 
-/* Container to align title and carousel */
+/* Video Background */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Keep the video behind other content */
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the video covers the entire section */
+    object-position: center; /* Center the video */
+}
+
 .services-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 90%;
     max-width: 1200px;
+    position: relative; /* Ensure the content is positioned above the video */
+    z-index: 2; /* Keep the content above the video */
+    color: #ffffff; /* White text for contrast */
 }
 
-/* Title Section */
 .services-title {
     flex: 1;
     margin-right: 50px;
@@ -223,16 +241,17 @@ nav {
 
 .services-title h1 {
     font-size: 36px;
-    color: #03caca; /* Teal color */
+    color: #ffffff; /* White for visibility */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Shadow for better readability */
 }
 
 .services-title p {
     font-size: 16px;
-    color: #333;
+    color: #ffffff; /* White for visibility */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     line-height: 1.6;
 }
 
-/* Carousel Section */
 .services-carousel {
     flex: 3;
     position: relative;
@@ -240,10 +259,10 @@ nav {
     align-items: center;
 }
 
-/* Updated Arrow Styles */
+/* Arrow Styles */
 .arrow {
     font-size: 2rem;
-    color: #03caca; /* Teal color */
+    color: #03caca;
     cursor: pointer;
     user-select: none;
     z-index: 10;
@@ -253,27 +272,26 @@ nav {
     align-items: center;
     width: 40px;
     height: 40px;
-    border: 2px solid #03caca; /* Border for visual effect */
-    border-radius: 50%; /* Make it circular */
-    background-color: white; /* Background for visibility */
+    border: 2px solid #03caca;
+    border-radius: 50%;
+    background-color: white;
 }
 
 .arrow:hover {
     color: #ffffff;
-    background-color: #03caca; /* Darker teal */
+    background-color: #03caca;
 }
 
 .left-arrow {
     position: absolute;
-    left: -50px; /* Adjust this value based on your design */
+    left: -50px;
 }
 
 .right-arrow {
     position: absolute;
-    right: -50px; /* Adjust this value based on your design */
+    right: -50px;
 }
 
-/* Wrapper for Services */
 .services-wrapper {
     display: flex;
     overflow: hidden;
@@ -281,9 +299,9 @@ nav {
 }
 
 .service {
-    min-width: 33%; /* Show 3 images at a time */
-    margin: 0 5px; /* 10px total margin considered in JavaScript */
-    height: 400px; /* Adjust based on your design */
+    min-width: 33%;
+    margin: 0 5px;
+    height: 400px;
     background-size: cover;
     background-position: center;
     border-radius: 10px;
@@ -291,22 +309,22 @@ nav {
     transition: transform 0.3s ease;
     overflow: hidden;
     position: relative;
+    background-color: rgba(0, 128, 128, 0.7); /* Semi-transparent background for visibility */
+    color: #ffffff; /* White text color */
 }
 
-/* Service Title */
 .service-title {
     position: absolute;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 24px;
-    color: #00aaff;
+    color: #ffffff; /* White text */
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     z-index: 2;
 }
 
-/* Overlay for Service Description */
 .overlay {
     position: absolute;
     top: 100%;
@@ -331,164 +349,10 @@ nav {
     opacity: 1;
 }
 
-
-/* Hide scrollbar */
 .services-wrapper::-webkit-scrollbar {
     display: none;
 }
 
 .services-wrapper {
     scrollbar-width: none;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .services-wrapper {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-    }
-
-    .service {
-        min-width: 80%; /* Adjust for smaller screens */
-    }
-
-    .service-title {
-        font-size: 18px;
-    }
-
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-
-/* Section */
-.overlay p {
-    font-size: 14px;
-}
-
-.overlay a {
-    display: inline-block;
-    margin-top: 15px;
-    color: white;
-    text-decoration: none;
-    background-color: #ff004f;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-}
-
-.overlay a:hover {
-    background-color: #e60046;
-}
-
-/* Hide scrollbar */
-.services-carousel::-webkit-scrollbar {
-    display: none;
-}
-
-.services-carousel {
-    scrollbar-width: none;
-}
-
-
-/* Media Queries for Mobile */
-@media (max-width: 768px) {
-    /* Hamburger Menu */
-    .hamburger {
-        display: block; /* Display hamburger menu on mobile */
-    }
-
-    .nav-links {
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 25%;
-        height: 0;
-        overflow: hidden;
-       /* background-color: #008080;*/
-        flex-direction: column;
-        align-items: center;
-        transition: height 0.3s ease;
-    }
-
-    .nav-links.show {
-        height: 200px; /* Adjust height when expanded */
-    }
-
-    .nav-links li {
-        margin: 15px 0;
-    }
-
-    .nav-links li a {
-        font-size: 18px;
-    }
-
-    /* Hero Section */
-    .hero {
-        height: 100vh;
-        min-height: 100vh;
-        padding: 20px;
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-    }
-
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-
-    .hero h2 {
-        font-size: 1.5rem;
-    }
-
-    .hero p {
-        font-size: 0.9rem;
-    }
-
-    .hero .btn {
-        font-size: 0.9rem;
-        padding: 8px 15px;
-    }
-
-    /* About Section */
-    .about {
-        height: 100vh;
-        min-height: 100vh;
-    }
-
-    .video-background video {
-        width: 100vw;
-        height: 100vh;
-        object-fit: cover;
-        object-position: center center;
-    }
-
-    .about-container {
-        padding: 20px;
-        background: linear-gradient(90deg, rgba(0, 128, 128, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
-    }
-
-    .about-content h2 {
-        font-size: 24px;
-    }
-
-    .about-content p {
-        font-size: 14px;
-    }
-
-    /* Services Section */
-    .service {
-        min-width: 250px;
-        height: 350px;
-    }
-
-    .service-title {
-        font-size: 18px;
-    }
-
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
 }
