@@ -198,42 +198,102 @@ nav {
 
 /* Services Section */
 #services {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #e0f7f7;
-    padding: 0;
+    padding: 50px 0;
     height: 100vh;
 }
 
-.sub-title {
-    text-align: center;
-    font-size: 36px;
-    margin-bottom: 50px;
-    color: #03caca;
+/* Container to align title and carousel */
+.services-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1200px;
 }
 
-/* Services Carousel */
+/* Title Section */
+.services-title {
+    flex: 1;
+    margin-right: 50px;
+}
+
+.services-title h1 {
+    font-size: 36px;
+    color: #03caca; /* Teal color */
+}
+
+.services-title p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Carousel Section */
 .services-carousel {
+    flex: 3;
+    position: relative;
     display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    gap: 20px;
-    padding: 10px 0;
-    height: calc(100vh - 100px);
+    align-items: center;
+}
+
+/* Updated Arrow Styles */
+.arrow {
+    font-size: 2rem;
+    color: #03caca; /* Teal color */
+    cursor: pointer;
+    user-select: none;
+    z-index: 10;
+    transition: color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #03caca; /* Border for visual effect */
+    border-radius: 50%; /* Make it circular */
+    background-color: white; /* Background for visibility */
+}
+
+.arrow:hover {
+    color: #ffffff;
+    background-color: #03caca; /* Darker teal */
+}
+
+.left-arrow {
+    position: absolute;
+    left: -50px; /* Adjust this value based on your design */
+}
+
+.right-arrow {
+    position: absolute;
+    right: -50px; /* Adjust this value based on your design */
+}
+
+/* Wrapper for Services */
+.services-wrapper {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
 }
 
 .service {
-    position: relative;
-    min-width: 33%;
-    height: 100%;
+    min-width: 33%; /* Show 3 images at a time */
+    margin: 0 5px; /* 10px total margin considered in JavaScript */
+    height: 400px; /* Adjust based on your design */
     background-size: cover;
     background-position: center;
     border-radius: 10px;
-    scroll-snap-align: start;
     flex-shrink: 0;
     transition: transform 0.3s ease;
     overflow: hidden;
+    position: relative;
 }
 
+/* Service Title */
 .service-title {
     position: absolute;
     bottom: 20px;
@@ -246,10 +306,7 @@ nav {
     z-index: 2;
 }
 
-.service:hover {
-    transform: scale(1.05);
-}
-
+/* Overlay for Service Description */
 .overlay {
     position: absolute;
     top: 100%;
@@ -274,6 +331,39 @@ nav {
     opacity: 1;
 }
 
+
+/* Hide scrollbar */
+.services-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.services-wrapper {
+    scrollbar-width: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .services-wrapper {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+
+    .service {
+        min-width: 80%; /* Adjust for smaller screens */
+    }
+
+    .service-title {
+        font-size: 18px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* Section */
 .overlay p {
     font-size: 14px;
 }
