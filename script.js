@@ -21,11 +21,23 @@ leftArrow.onclick = function () {
     });
 };
 
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
+document.addEventListener("DOMContentLoaded", function() {
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
 
-// Toggle the show class when the hamburger menu is clicked
-hamburger.onclick = function () {
-    navLinks.classList.toggle('show');
-};
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('nav-active'); // Toggle the nav-active class
+        hamburger.querySelector('i').classList.toggle('fa-bars'); // Change icon to X
+        hamburger.querySelector('i').classList.toggle('fa-times'); // Change icon back to hamburger
+    });
+
+    // Close the menu when a link is clicked
+    navLinks.querySelectorAll('li a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('nav-active'); // Hide nav links
+            hamburger.querySelector('i').classList.remove('fa-times'); // Change back to hamburger
+            hamburger.querySelector('i').classList.add('fa-bars'); // Change icon back to hamburger
+        });
+    });
+});
 

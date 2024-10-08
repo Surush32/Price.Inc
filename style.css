@@ -9,11 +9,9 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-}
-
-html {
     scroll-padding-top: 80px;
 }
+
 
 body {
     font-family: Arial, sans-serif;
@@ -27,6 +25,7 @@ header {
     width: 100%;
     padding: 20px 50px;
     z-index: 10;
+    scroll-padding-top: 80px;
 }
 
 nav {
@@ -205,10 +204,10 @@ nav {
     height: 100vh;
     position: relative; 
     overflow: hidden; 
-    background-image: url('images/pexels-adrien-olichon-1257089-2387793.jpg'); /* Set your image here */
-    background-size: cover; /* Make sure the image covers the entire section */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-image: url('images/pexels-adrien-olichon-1257089-2387793.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
 }
 
 
@@ -218,14 +217,14 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Keep the video behind other content */
+    z-index: -1; 
 }
 
 .video-background video {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensure the video covers the entire section */
-    object-position: center; /* Center the video */
+    object-fit: cover; 
+    object-position: center; 
 }
 
 .services-container {
@@ -234,9 +233,9 @@ nav {
     justify-content: space-between;
     width: 90%;
     max-width: 1200px;
-    position: relative; /* Ensure the content is positioned above the video */
-    z-index: 2; /* Keep the content above the video */
-    color: #ffffff; /* White text for contrast */
+    position: relative; 
+    z-index: 2; 
+    color: #ffffff; 
 }
 
 .services-title {
@@ -246,8 +245,8 @@ nav {
 
 .services-title h1 {
     font-size: 36px;
-    color: #03caca; /* White for visibility */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Shadow for better readability */
+    color: #03caca; 
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .services-title p {
@@ -324,7 +323,7 @@ nav {
     left: 50%;
     transform: translateX(-50%);
     font-size: 24px;
-    color: #ffffff; /* White text */
+    color: #ffffff; 
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     z-index: 2;
@@ -340,7 +339,7 @@ nav {
     color: white;
     padding: 20px;
     text-align: center;
-    transition: all 0.4s ease;
+    transition: all 1.4s ease;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -375,3 +374,139 @@ nav {
 .service a:hover {
     background-color: #03caca;
 }
+
+/* General styles */
+nav {
+    position: relative; /* Ensure nav is positioned correctly */
+  }
+ 
+  /* Responsive Styles */
+@media only screen and (max-width: 600px) {
+    .hero { /* Update this selector if needed */
+        background-image: url('images/pexels-pixabay-163790.jpg'); /* Background image for small screens */
+        background-size: cover; /* Cover the entire header */
+        height: 100vh; /* Full height for header */
+        position: relative; /* Ensure positioning is relative */
+        color: white; /* Set text color to white for visibility */
+    }
+
+    /* Hide the original header image for smaller screens */
+    .hero::before {
+        content: ""; /* Disable the default background overlay if not needed */
+        background: none; /* Ensure no background from before */
+    }
+
+    .hero-content {
+        position: absolute; /* Position text absolutely within the header */
+        top: 50%; /* Center vertically */
+        left: 50%; /* Center horizontally */
+        transform: translate(-50%, -50%); /* Adjust for center alignment */
+        text-align: center; /* Center the text */
+        z-index: 2; /* Ensure content is above the background */
+    }
+
+    .hamburger {
+        display: block; /* Show hamburger icon on small screens */
+        font-size: 30px; /* Hamburger icon size */
+        color: white; /* Hamburger icon color */
+        cursor: pointer; /* Pointer cursor for hamburger */
+    }
+
+    .nav-links {
+        background: #ff004f; /* Background color of the menu */
+        position: fixed; /* Fix position for sliding effect */
+        top: 0;
+        right: -200px; /* Start hidden off the right side */
+        width: 200px; /* Width of the nav menu */
+        height: 100vh; /* Full height of the screen */
+        padding-top: 50px; /* Space at the top */
+        z-index: 2; /* Ensure it appears above other elements */
+        transition: right 0.5s; /* Smooth slide in/out effect */
+        display: flex; /* Use flexbox for alignment */
+        flex-direction: column; /* Align links in a column */
+        align-items: flex-start; /* Align items to the start */
+        overflow: hidden; /* Hide overflowing content */
+    }
+
+    .nav-active {
+        right: 0; /* Slide in from the right */
+    }
+
+    .nav-links li {
+        display: block; /* Ensure each link takes a full row */
+        margin: 25px 0; /* Vertical margin for spacing between links */
+        width: 100%; /* Make links take full width */
+        text-align: left; /* Align text to the left */
+    }
+
+    .nav-links .close {
+        position: absolute; /* Position the close icon */
+        top: 25px;
+        left: 25px;
+        cursor: pointer; /* Pointer cursor for close icon */
+        color: white; /* Color for close icon */
+        font-size: 25px; /* Size for close icon */
+    }
+}
+
+/* Media Query for Mobile Screens */
+@media only screen and (max-width: 600px) {
+
+    /* Wrapper for services, showing only one service at a time */
+    .services-wrapper {
+        display: flex;
+        overflow: hidden; /* Hide overflow to show only one image */
+        width: 100%; /* Full width for mobile */
+        position: relative; /* Needed for arrow positioning */
+    }
+
+    /* Individual service boxes */
+    .service {
+        min-width: 100%; /* Show one service at a time on mobile */
+        margin: 0; /* Remove margin to avoid overflow issues */
+        height: 300px; /* Adjust height for smaller screens */
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        flex-shrink: 0; /* Ensure no shrinking */
+        transition: transform 0.3s ease;
+        overflow: hidden;
+        position: relative;
+        background-color: rgba(0, 128, 128, 0.7); 
+        color: #ffffff; 
+    }
+
+    /* Position arrows correctly for mobile */
+    .left-arrow, .right-arrow {
+        position: absolute;
+        top: 50%; /* Center arrows vertically */
+        transform: translateY(-50%);
+        z-index: 10;
+    }
+
+    .left-arrow {
+        left: 10px; /* Adjust for mobile screen */
+    }
+
+    .right-arrow {
+        right: 10px; /* Adjust for mobile screen */
+    }
+
+    /* Service title styling */
+    .service-title {
+        font-size: 18px; /* Adjusted for smaller screens */
+        bottom: 15px; /* Move closer to the bottom */
+    }
+
+    /* Overlay adjustments for smaller screens */
+    .overlay {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    .service a {
+        padding: 8px 15px; /* Adjust padding for smaller buttons */
+        font-size: 14px; /* Smaller font size */
+    }
+}
+
+
